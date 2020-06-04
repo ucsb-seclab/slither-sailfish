@@ -136,6 +136,32 @@ class HighLevelCall(Call, OperationWithLValue):
     ###################################################################################
     ###################################################################################
 
+    def old__str__(self):
+        value = ''
+        gas = ''
+        if self.call_value:
+            value = 'value:{}'.format(self.call_value)
+        if self.call_gas:
+            gas = 'gas:{}'.format(self.call_gas)
+        arguments = []
+        if self.arguments:
+            arguments = self.arguments
+
+        txt = '{}HIGH_LEVEL_CALL, dest:{}({}), function:{}, arguments:{} {} {}'
+        if not self.lvalue:
+            lvalue = ''
+        elif isinstance(self.lvalue.type, (list,)):
+            lvalue = '{}({}) = '.format(self.lvalue, ','.join(str(x) for x in self.lvalue.type))
+        else:
+            lvalue = '{}({}) = '.format(self.lvalue, self.lvalue.type)
+        return txt.format(lvalue,
+                          self.destination,
+                          self.destination.type,
+                          self.function_name,
+                          [str(x) for x in arguments],
+                          value,
+                          gas)
+
     def __str__(self):
         value = ''
         gas = ''

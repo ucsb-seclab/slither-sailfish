@@ -29,7 +29,7 @@ class InitArray(OperationWithLValue):
     def init_values(self):
         return list(self._init_values)
 
-    def __str__(self):
+    def old__str__(self):
 
         def convert(elem):
             if isinstance(elem, (list,)):
@@ -37,3 +37,12 @@ class InitArray(OperationWithLValue):
             return str(elem)
         init_values = convert(self.init_values)
         return "{}({}) =  {}".format(self.lvalue, self.lvalue.type, init_values)
+
+    def __str__(self):
+
+        def convert(elem):
+            if isinstance(elem, (list,)):
+                return str([convert(x) for x in elem])
+            return str(elem)
+        init_values = convert(self.init_values)
+        return "{} =  {}".format(self.lvalue, init_values)

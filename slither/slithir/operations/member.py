@@ -32,6 +32,8 @@ class Member(OperationWithLValue):
     def variable_right(self):
         return self._variable_right
 
-    def __str__(self):
+    def old__str__(self):
         return '{}({}) -> {}.{}'.format(self.lvalue, self.lvalue.type, self.variable_left, self.variable_right)
 
+    def __str__(self):
+        return '{} -> {}.{}'.format(self.lvalue, self.variable_left, self.variable_right)

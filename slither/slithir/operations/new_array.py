@@ -24,6 +24,7 @@ class NewArray(Call, OperationWithLValue):
     def depth(self):
         return self._depth
 
+
     def __str__(self):
         args = [str(a) for a in self.arguments]
         return '{} = new {}{}({})'.format(self.lvalue, self.array_type, '[]'*self.depth, ','.join(args))

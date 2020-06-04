@@ -37,5 +37,8 @@ class Index(OperationWithLValue):
     def index_type(self):
         return self._type
 
-    def __str__(self):
+    def old__str__(self):
         return "{}({}) -> {}[{}]".format(self.lvalue, self.lvalue.type, self.variable_left, self.variable_right)
+
+    def __str__(self):
+        return "{} -> {}[{}]".format(self.lvalue, self.variable_left, self.variable_right)

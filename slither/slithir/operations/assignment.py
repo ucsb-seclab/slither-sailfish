@@ -35,10 +35,18 @@ class Assignment(OperationWithLValue):
     def rvalue(self):
         return self._rvalue
 
-    def __str__(self):
+    def old__str__(self):
         if isinstance(self.lvalue, ReferenceVariable):
             points = self.lvalue.points_to
             while isinstance(points, ReferenceVariable):
                 points = points.points_to
             return '{} (->{}) := {}({})'.format(self.lvalue, points, self.rvalue, self.rvalue.type)
         return '{}({}) := {}({})'.format(self.lvalue, self.lvalue.type, self.rvalue, self.rvalue.type)
+    
+    def __str__(self):
+        if isinstance(self.lvalue, ReferenceVariable):
+            points = self.lvalue.points_to
+            while isinstance(points, ReferenceVariable):
+                points = points.points_to
+            return '{} := {}'.format(self.lvalue, self.rvalue)
+        return '{} := {}'.format(self.lvalue, self.rvalue)

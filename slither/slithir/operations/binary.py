@@ -164,7 +164,7 @@ class Binary(OperationWithLValue):
     def type_str(self):
         return BinaryType.str(self._type)
 
-    def __str__(self):
+    def old__str__(self):
         if isinstance(self.lvalue, ReferenceVariable):
             points = self.lvalue.points_to
             while isinstance(points, ReferenceVariable):
@@ -176,6 +176,20 @@ class Binary(OperationWithLValue):
                                               self.variable_right)
         return '{}({}) = {} {} {}'.format(str(self.lvalue),
                                           self.lvalue.type,
+                                          self.variable_left,
+                                          self.type_str,
+                                          self.variable_right)
+
+    def __str__(self):
+        if isinstance(self.lvalue, ReferenceVariable):
+            points = self.lvalue.points_to
+            while isinstance(points, ReferenceVariable):
+                points = points.points_to
+            return '{} = {} {} {}'.format(str(self.lvalue),
+                                              self.variable_left,
+                                              self.type_str,
+                                              self.variable_right)
+        return '{} = {} {} {}'.format(str(self.lvalue),
                                           self.variable_left,
                                           self.type_str,
                                           self.variable_right)

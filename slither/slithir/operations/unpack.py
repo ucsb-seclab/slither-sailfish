@@ -27,8 +27,13 @@ class Unpack(OperationWithLValue):
     def index(self):
         return self._idx
 
-    def __str__(self):
+    def old__str__(self):
         return "{}({})= UNPACK {} index: {} ".format(self.lvalue,
                                                      self.lvalue.type,
+                                                     self.tuple,
+                                                     self.index)
+
+    def __str__(self):
+        return "{} = UNPACK {} index: {} ".format(self.lvalue,
                                                      self.tuple,
                                                      self.index)
