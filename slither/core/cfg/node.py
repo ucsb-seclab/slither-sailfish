@@ -2,7 +2,7 @@
     Node module
 """
 import logging
-
+from typing import Optional
 from slither.core.children.child_function import ChildFunction
 from slither.core.declarations import Contract
 from slither.core.declarations.solidity_variables import SolidityVariable
@@ -604,6 +604,21 @@ class Node(SourceMapping, ChildFunction):
             list(Node): list of sons
         """
         return list(self._sons)
+
+
+    @property
+    def son_true(self) -> Optional["Node"]:
+        if self.type == NodeType.IF:
+            return self._sons[0]
+        else:
+            return None
+
+    @property
+    def son_false(self) -> Optional["Node"]:
+        if self.type == NodeType.IF and len(self._sons) >= 1:
+            return self._sons[1]
+        else:
+            return None
 
     # endregion
     ###################################################################################

@@ -1130,7 +1130,7 @@ class Function(ChildContract, ChildInheritance, SourceMapping):
                 [str(x) for x in self.internal_calls],
                 [str(x) for x in self.external_calls_as_expressions])
 
-    def is_protected(self):
+    def is_protected_original(self):
         """
             Determine if the function is protected using a check on msg.sender
 
@@ -1148,7 +1148,25 @@ class Function(ChildContract, ChildInheritance, SourceMapping):
         args_vars = self.all_solidity_variables_used_as_args()
         return SolidityVariableComposed('msg.sender') in conditional_vars + args_vars
 
+    
+    def is_protected(self):
+        """
+            Determine if the function is a contructor, if yes, we mark it
+            as protected. Please note this is a slight deviation of actual definition
+            of protected functions that Slither has. For our analysis, we only care
+            whether the function is a constructor or not. Because, we use this to know
+            whether a call destination is tainted or not. For that it is inaccurate not 
+            to consider functions which has checks on `msg.sender`
+        
+        Returns
+            (bool)
+        """
 
+        if self.is_constructor:
+            return True
+
+        return False
+    
     # endregion
     ###################################################################################
     ###################################################################################
