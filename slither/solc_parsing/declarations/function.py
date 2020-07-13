@@ -837,6 +837,14 @@ class FunctionSolc(Function):
 
         for son in node.sons:
             son.remove_father(node)
+
+        fathers = list(end_node.fathers)
+        
+        for father in fathers:
+            if not father.is_conditional():
+                end_node.remove_father(father)
+                father.remove_son(end_node)
+        
         node.set_sons([end_node])
         end_node.add_father(node)
 
