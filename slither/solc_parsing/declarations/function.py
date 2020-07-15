@@ -918,8 +918,9 @@ class FunctionSolc(Function):
     def _parse_modifier(self, modifier):
         m = parse_expression(modifier, self)
         self._expression_modifiers.append(m)
+
         for m in ExportValues(m).result():
-            if isinstance(m, Function):
+            if type(m).__name__ == "ModifierSolc":
                 entry_point = self._new_node(NodeType.OTHER_ENTRYPOINT, modifier['src'])
                 node = self._new_node(NodeType.EXPRESSION, modifier['src'])
                 node.add_unparsed_expression(modifier)
