@@ -1013,7 +1013,7 @@ def convert_type_of_high_and_internal_level_call(ir, contract):
                 isinstance(return_type, UserDefinedType) and
                 isinstance(return_type.type, Structure)):
             return_type = _convert_to_structure_to_list(return_type)
-            
+
         ir.lvalue.set_type(return_type)
     else:
         ir.lvalue = None
