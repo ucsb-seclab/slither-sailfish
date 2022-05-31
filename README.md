@@ -1,5 +1,4 @@
-# Modified version of slither for smart-abstract project
-# Slither, the Solidity source analyzer
+# Modified version of slither for [Sailfish](https://github.com/ucsb-seclab/sailfish)
 <img src="./logo.png" alt="Logo" width="500"/>
 
 [![Build Status](https://travis-ci.com/crytic/slither.svg?token=JEF97dFy1QsDCfQ2Wusd&branch=master)](https://travis-ci.com/crytic/slither)
@@ -83,34 +82,14 @@ See the [Tool documentation](https://github.com/crytic/slither/wiki/Tool-Documen
 
 Slither requires Python 3.6+ and [solc](https://github.com/ethereum/solidity/), the Solidity compiler. 
 
-### Using Pip
-
-```
-$ pip3 install slither-analyzer
-```
-
 ### Using Git
 
 ```bash
-$ git clone https://github.com/crytic/slither.git && cd slither
+$ git clone git@github.com:ucsb-seclab/slither-sailfish.git && cd slither-sailfish
 $ python3 setup.py install
 ```
 
 We recommend using an Python virtual environment, as detailed in the [Developer Installation Instructions](https://github.com/trailofbits/slither/wiki/Developer-installation), if you prefer to install Slither via git.
-
-### Using Docker
-
-Use the [`eth-security-toolbox`](https://github.com/trailofbits/eth-security-toolbox/) docker image. It includes all of our security tools and every major version of Solidity in a single image. `/home/share` will be mounted to `/share`  in the container. 
-
-```
-docker pull trailofbits/eth-security-toolbox
-```
-
-To share a directory in the container:
-
-```
-docker run -it -v /home/share:/share trailofbits/eth-security-toolbox
-```
 
 ## Getting Help
 
@@ -132,7 +111,5 @@ Slither is licensed and distributed under the AGPLv3 license. [Contact us](mailt
 ## Publication
 - [Slither: A Static Analysis Framework For Smart Contracts](https://arxiv.org/abs/1908.09878), Josselin Feist, Gustavo Grieco, Alex Groce - WETSEB '19
 
-If you are using Slither on an academic work, consider applying to the [Crytic $10k Research Prize](https://blog.trailofbits.com/2019/11/13/announcing-the-crytic-10k-research-prize/).
-=======
 # Slither
 
