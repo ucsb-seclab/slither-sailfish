@@ -1,4 +1,4 @@
-# Modified version of slither for [Sailfish](https://github.com/ucsb-seclab/sailfish)
+# Modified version of Slither for [Sailfish](https://github.com/ucsb-seclab/sailfish)
 <img src="./logo.png" alt="Logo" width="500"/>
 
 [![Build Status](https://travis-ci.com/crytic/slither.svg?token=JEF97dFy1QsDCfQ2Wusd&branch=master)](https://travis-ci.com/crytic/slither)
